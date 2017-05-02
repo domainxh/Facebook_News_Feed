@@ -26,7 +26,7 @@ class FeedCell: UICollectionViewCell {
         
         let attributedText = NSMutableAttributedString(string: "Soja Tan", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
         
-        let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor(red: 155/255, green: 161/255, blue: 171/255, alpha: 1)]
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor.rgb(155, 161, 171)]
         attributedText.append(NSAttributedString(string: "\nDecember 8 San Franscisco", attributes: attributes))
         
         let paragraphStyle = NSMutableParagraphStyle()
@@ -64,18 +64,64 @@ class FeedCell: UICollectionViewCell {
         return image
     }()
     
+    let imageLikeStatistics: UILabel = {
+        let label = UILabel()
+        label.text = "488 Likes   10.7k Comments"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = UIColor.rgb(155, 161, 171)
+        return label
+    }()
+    
+    let dividerLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.rgb(226, 228, 232)
+        return view
+    }()
+    
+    let likeButton = FeedCell.createButton(title: "Like", image: "like")
+    let commentButton = FeedCell.createButton(title: "Comment", image: "comment")
+    let shareButton = FeedCell.createButton(title: "Share", image: "share")
+    
+    
     func setupViews() {
         backgroundColor = .white
+        let buttons = UIStackView(arrangedSubviews: [likeButton, commentButton, shareButton])
+        buttons.distribution = .fillEqually
+        
         addSubview(nameLabel)
         addSubview(profileImageView)
         addSubview(statusTextView)
         addSubview(statusImageView)
+        addSubview(imageLikeStatistics)
+        addSubview(dividerLineView)
+        addSubview(buttons)
         
         addConstraintsWithFormat("H:|-8-[v0(44)]-8-[v1]|", views: profileImageView, nameLabel)
         addConstraintsWithFormat("V:|-12-[v0]", views: nameLabel)
-        addConstraintsWithFormat("V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]|", views: profileImageView, statusTextView, statusImageView)
+        addConstraintsWithFormat("V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]-4-[v3(24)]-4-[v4(0.5)][v5(44)]|", views: profileImageView, statusTextView, statusImageView, imageLikeStatistics, dividerLineView, buttons)
         addConstraintsWithFormat("H:|-4-[v0]-4-|", views: statusTextView)
         addConstraintsWithFormat("H:|[v0]|", views: statusImageView)
+        addConstraintsWithFormat("H:|-8-[v0]-8-|", views: imageLikeStatistics)
+        addConstraintsWithFormat("H:|-12-[v0]-12-|", views: dividerLineView)
+        addConstraintsWithFormat("H:|[v0]|", views: buttons)
+        
+    }
+   
+    static func createButton(title: String, image: String) -> UIButton {
+        let button = UIButton()
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor.rgb(143, 150, 263), for: .normal)
+        button.setImage(UIImage(named: image), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0)
+        return button
+    }
+    
+}
+
+extension UIColor {
+    static func rgb(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat) -> UIColor {
+        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
 }
 
