@@ -20,25 +20,40 @@ class FeedCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var post: Post? {
+        didSet {
+            
+            statusImageView.image = nil
+    
+            guard let name = post?.name else { return }
+            guard let profileImageName = post?.profileImageName else { return }
+            guard let statusText = post?.statusText else { return }
+            guard let statusImageName = post?.statusImageName else { return }
+            
+            let attributedText = NSMutableAttributedString(string: name, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
+            
+            let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor.rgb(155, 161, 171)]
+            attributedText.append(NSAttributedString(string: "\nDecember 8 San Franscisco", attributes: attributes))
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 4
+            attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedText.string.characters.count))
+            
+            let attachment = NSTextAttachment()
+            attachment.image = UIImage(named: "globe_small")
+            attachment.bounds = CGRect(x: 0, y: -2, width: 12, height: 12)
+            attributedText.append(NSAttributedString(attachment: attachment))
+            
+            nameLabel.attributedText = attributedText
+            profileImageView.image = UIImage(named: profileImageName)
+            statusTextView.text = statusText
+            statusImageView.image = UIImage(named: statusImageName)
+        }
+    }
+    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        
-        let attributedText = NSMutableAttributedString(string: "Soja Tan", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
-        
-        let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor.rgb(155, 161, 171)]
-        attributedText.append(NSAttributedString(string: "\nDecember 8 San Franscisco", attributes: attributes))
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 4
-        attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedText.string.characters.count))
-        
-        let attachment = NSTextAttachment()
-        attachment.image = UIImage(named: "globe_small")
-        attachment.bounds = CGRect(x: 0, y: -2, width: 12, height: 12)
-        attributedText.append(NSAttributedString(attachment: attachment))
-        
-        label.attributedText = attributedText
         return label
     }()
     
@@ -52,7 +67,9 @@ class FeedCell: UICollectionViewCell {
     let statusTextView: UITextView = {
         let textView = UITextView()
         textView.text = "This is just a placeholder textview blahblah ..."
-        textView.font = UIFont.boldSystemFont(ofSize: 14)
+        textView.isScrollEnabled = false
+        textView.isEditable = false
+        textView.font = UIFont.systemFont(ofSize: 14)
         return textView
     }()
     
@@ -82,7 +99,6 @@ class FeedCell: UICollectionViewCell {
     let commentButton = FeedCell.createButton(title: "Comment", image: "comment")
     let shareButton = FeedCell.createButton(title: "Share", image: "share")
     
-    
     func setupViews() {
         backgroundColor = .white
         let buttons = UIStackView(arrangedSubviews: [likeButton, commentButton, shareButton])
@@ -98,7 +114,7 @@ class FeedCell: UICollectionViewCell {
         
         addConstraintsWithFormat("H:|-8-[v0(44)]-8-[v1]|", views: profileImageView, nameLabel)
         addConstraintsWithFormat("V:|-12-[v0]", views: nameLabel)
-        addConstraintsWithFormat("V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]-4-[v3(24)]-4-[v4(0.5)][v5(44)]|", views: profileImageView, statusTextView, statusImageView, imageLikeStatistics, dividerLineView, buttons)
+        addConstraintsWithFormat("V:|-8-[v0(44)]-4-[v1]-4-[v2(200)]-4-[v3(24)]-4-[v4(0.5)][v5(44)]|", views: profileImageView, statusTextView, statusImageView, imageLikeStatistics, dividerLineView, buttons)
         addConstraintsWithFormat("H:|-4-[v0]-4-|", views: statusTextView)
         addConstraintsWithFormat("H:|[v0]|", views: statusImageView)
         addConstraintsWithFormat("H:|-8-[v0]-8-|", views: imageLikeStatistics)

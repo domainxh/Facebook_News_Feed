@@ -12,6 +12,8 @@
 		F73961D51EB4D9EB009AD8C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F73961D41EB4D9EB009AD8C6 /* Assets.xcassets */; };
 		F73961D81EB4D9EB009AD8C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F73961D61EB4D9EB009AD8C6 /* LaunchScreen.storyboard */; };
 		F73961E01EB4E8AD009AD8C6 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73961DF1EB4E8AD009AD8C6 /* FeedCell.swift */; };
+		F7A803BA1EB82A9B003F0062 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A803B91EB82A9B003F0062 /* Post.swift */; };
+		F7A803BC1EB96872003F0062 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A803BB1EB96872003F0062 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		F73961D71EB4D9EB009AD8C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F73961D91EB4D9EB009AD8C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F73961DF1EB4E8AD009AD8C6 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		F7A803B91EB82A9B003F0062 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		F7A803BB1EB96872003F0062 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +61,11 @@
 				F73961CD1EB4D9EB009AD8C6 /* AppDelegate.swift */,
 				F73961CF1EB4D9EB009AD8C6 /* FeedController.swift */,
 				F73961DF1EB4E8AD009AD8C6 /* FeedCell.swift */,
+				F7A803B91EB82A9B003F0062 /* Post.swift */,
 				F73961D41EB4D9EB009AD8C6 /* Assets.xcassets */,
 				F73961D61EB4D9EB009AD8C6 /* LaunchScreen.storyboard */,
 				F73961D91EB4D9EB009AD8C6 /* Info.plist */,
+				F7A803BB1EB96872003F0062 /* Location.swift */,
 			);
 			path = Facebook_News_Feed;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			files = (
 				F73961D01EB4D9EB009AD8C6 /* FeedController.swift in Sources */,
 				F73961CE1EB4D9EB009AD8C6 /* AppDelegate.swift in Sources */,
+				F7A803BC1EB96872003F0062 /* Location.swift in Sources */,
 				F73961E01EB4E8AD009AD8C6 /* FeedCell.swift in Sources */,
+				F7A803BA1EB82A9B003F0062 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +302,7 @@
 				F73961DE1EB4D9EB009AD8C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
