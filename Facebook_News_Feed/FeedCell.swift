@@ -12,12 +12,17 @@ class FeedCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    var feedController: FeedController?
+    
+    func animate() {
+        feedController?.animateImageView(statusImageView: statusImageView)
     }
     
     var post: Post? {
@@ -78,6 +83,7 @@ class FeedCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.image = UIImage(named: "zuckdog")
+        image.isUserInteractionEnabled = true
         return image
     }()
     
@@ -112,6 +118,8 @@ class FeedCell: UICollectionViewCell {
         addSubview(dividerLineView)
         addSubview(buttons)
         
+        statusImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animate)))
+        
         addConstraintsWithFormat("H:|-8-[v0(44)]-8-[v1]|", views: profileImageView, nameLabel)
         addConstraintsWithFormat("V:|-12-[v0]", views: nameLabel)
         addConstraintsWithFormat("V:|-8-[v0(44)]-4-[v1]-4-[v2(200)]-4-[v3(24)]-4-[v4(0.5)][v5(44)]|", views: profileImageView, statusTextView, statusImageView, imageLikeStatistics, dividerLineView, buttons)
@@ -120,7 +128,6 @@ class FeedCell: UICollectionViewCell {
         addConstraintsWithFormat("H:|-8-[v0]-8-|", views: imageLikeStatistics)
         addConstraintsWithFormat("H:|-12-[v0]-12-|", views: dividerLineView)
         addConstraintsWithFormat("H:|[v0]|", views: buttons)
-        
     }
    
     static func createButton(title: String, image: String) -> UIButton {
@@ -132,29 +139,8 @@ class FeedCell: UICollectionViewCell {
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0)
         return button
     }
-    
-}
 
-extension UIColor {
-    static func rgb(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat) -> UIColor {
-        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
-    }
 }
-
-extension UIView {
-    // UIView... stands for variable length of view
-    func addConstraintsWithFormat(_ format: String, views: UIView...) {
-        var viewsDictionary = [String: UIView]()
-        for (index, view) in views.enumerated() {
-            let key = "v\(index)"
-            viewsDictionary[key] = view
-            view.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
-    }
-}
-
 
 
 

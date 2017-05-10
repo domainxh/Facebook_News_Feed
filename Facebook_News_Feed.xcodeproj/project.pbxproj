@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70F7A4B1EBC28BF00ABE7C5 /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70F7A4A1EBC28BF00ABE7C5 /* CustomTabBarVC.swift */; };
+		F70F7A4D1EBD57DC00ABE7C5 /* FriendRequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70F7A4C1EBD57DC00ABE7C5 /* FriendRequestsController.swift */; };
+		F70F7A4F1EBD585200ABE7C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70F7A4E1EBD585200ABE7C5 /* Extensions.swift */; };
 		F73961CE1EB4D9EB009AD8C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73961CD1EB4D9EB009AD8C6 /* AppDelegate.swift */; };
 		F73961D01EB4D9EB009AD8C6 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73961CF1EB4D9EB009AD8C6 /* FeedController.swift */; };
 		F73961D51EB4D9EB009AD8C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F73961D41EB4D9EB009AD8C6 /* Assets.xcassets */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F70F7A4A1EBC28BF00ABE7C5 /* CustomTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
+		F70F7A4C1EBD57DC00ABE7C5 /* FriendRequestsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRequestsController.swift; sourceTree = "<group>"; };
+		F70F7A4E1EBD585200ABE7C5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F73961CA1EB4D9EB009AD8C6 /* Facebook_News_Feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facebook_News_Feed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F73961CD1EB4D9EB009AD8C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F73961CF1EB4D9EB009AD8C6 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -60,12 +66,15 @@
 			children = (
 				F73961CD1EB4D9EB009AD8C6 /* AppDelegate.swift */,
 				F73961CF1EB4D9EB009AD8C6 /* FeedController.swift */,
+				F70F7A4C1EBD57DC00ABE7C5 /* FriendRequestsController.swift */,
+				F70F7A4A1EBC28BF00ABE7C5 /* CustomTabBarVC.swift */,
+				F7A803BB1EB96872003F0062 /* Location.swift */,
 				F73961DF1EB4E8AD009AD8C6 /* FeedCell.swift */,
 				F7A803B91EB82A9B003F0062 /* Post.swift */,
 				F73961D41EB4D9EB009AD8C6 /* Assets.xcassets */,
 				F73961D61EB4D9EB009AD8C6 /* LaunchScreen.storyboard */,
 				F73961D91EB4D9EB009AD8C6 /* Info.plist */,
-				F7A803BB1EB96872003F0062 /* Location.swift */,
+				F70F7A4E1EBD585200ABE7C5 /* Extensions.swift */,
 			);
 			path = Facebook_News_Feed;
 			sourceTree = "<group>";
@@ -142,11 +151,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F70F7A4B1EBC28BF00ABE7C5 /* CustomTabBarVC.swift in Sources */,
 				F73961D01EB4D9EB009AD8C6 /* FeedController.swift in Sources */,
 				F73961CE1EB4D9EB009AD8C6 /* AppDelegate.swift in Sources */,
+				F70F7A4F1EBD585200ABE7C5 /* Extensions.swift in Sources */,
 				F7A803BC1EB96872003F0062 /* Location.swift in Sources */,
 				F73961E01EB4E8AD009AD8C6 /* FeedCell.swift in Sources */,
 				F7A803BA1EB82A9B003F0062 /* Post.swift in Sources */,
+				F70F7A4D1EBD57DC00ABE7C5 /* FriendRequestsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
